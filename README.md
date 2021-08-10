@@ -14,6 +14,8 @@ None. Other than an account on [Grafana Cloud](https://grafana.com/products/clou
 
 ## Role Variables
 
+### Mandatory
+
 Available variables are listed below, along with default values (see `defaults/main.yml`). You can get the values for your enviroment from the [Grafana Cloud Portal](https://grafana.com/docs/grafana-cloud/cloud-portal/).
 
     prometheus_user: <username>
@@ -21,6 +23,12 @@ Available variables are listed below, along with default values (see `defaults/m
 Each service in [Grafana Cloud](https://grafana.com/products/cloud/) has a unique service id or user. Once in the [Grafana Cloud Portal](https://grafana.com/docs/grafana-cloud/cloud-portal/) click on Prometheus to get the value you need to provide for `prometheus_user`.
 
     grafana_api_key: <key>
+
+### Defaults
+
+You can change the default version of the agent by specifying the `agent_version` variable. If not defined, will fallback to the latest Grafana Agent install.
+
+    agent_version: v0.18.1
 
 You can generate a new API Key in the API Keys section of the [Grafana Cloud Portal](https://grafana.com/docs/grafana-cloud/cloud-portal/). The role has to be `MetricsPublisher`.
 
@@ -38,22 +46,9 @@ By default, this role will ensure [Grafana Cloud Agent](https://github.com/grafa
 
 Each service in [Grafana Cloud](https://grafana.com/products/cloud/) has a unique service id or user. Once in the [Grafana Cloud Portal](https://grafana.com/docs/grafana-cloud/cloud-portal/) click on Loki to get the value you need to provide for `loki_user`. If this value is present, this role will install the [Promtail](https://grafana.com/docs/loki/latest/clients/promtail/) agent and create a Systemd service for it. It will scrape messages from `/var/log` and `journald`. For reference, see [Journal Scraping](https://grafana.com/docs/loki/latest/clients/promtail/scraping/#journal-scraping-linux-only).
 
-## Overriding configuration/service templates
-
-- [ ] TODO
-
-
 ## Dependencies
 
 None.
-
-## Example Playbook
-
-    - hosts: server
-      roles:
-        - { role: nleiva.grafana-agent }
-
-See an example playbook I run for my home-lab [here](https://github.com/nleiva/ansible-home/blob/main/grafana-cloud.yml).
 
 ## License
 
