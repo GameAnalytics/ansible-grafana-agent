@@ -8,3 +8,5 @@ promtail_type:
 agent_location: /usr/local/bin
 config_location: /etc/grafana
 promtail_location: /opt/promtail
+agent_version: 'latest'
+agent_version_url: "{{ 'download/' + agent_version if agent_version != 'latest' else agent_version + '/download' }}"

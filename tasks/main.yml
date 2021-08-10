@@ -1,6 +1,6 @@
 - name: Download Agent file
   get_url:
-    url: "https://github.com/grafana/agent/releases/latest/download/agent-linux-{{ type[ansible_architecture] }}.zip"
+    url: "https://github.com/grafana/agent/releases/{{ agent_version_url }}/agent-linux-{{ type[ansible_architecture] }}.zip"
     dest: "/tmp/agent-linux.zip"
     mode: '0644'
 
