@@ -14,9 +14,9 @@ None. Other than an account on [Grafana Cloud](https://grafana.com/products/clou
 
 ## Role Variables
 
-### Mandatory
-
 Available variables are listed below, along with default values (see `defaults/main.yml`). You can get the values for your enviroment from the [Grafana Cloud Portal](https://grafana.com/docs/grafana-cloud/cloud-portal/).
+
+### Mandatory
 
     prometheus_user: <username>
 
@@ -24,13 +24,21 @@ Each service in [Grafana Cloud](https://grafana.com/products/cloud/) has a uniqu
 
     grafana_api_key: <key>
 
+You can generate a new API Key in the API Keys section of the Grafana Cloud Portal. The role has to be MetricsPublisher.
+
+    metric_label: <labelt>
+
+    target_host: <host>
+
+    target_port: <port>
+
+Above variables define scraping targets and labels for your endpoints. Endpoint name is `/metrics` by default.
+
 ### Defaults
 
-You can change the default version of the agent by specifying the `agent_version` variable. If not defined, will fallback to the latest Grafana Agent install.
+    agent_version: latest
 
-    agent_version: v0.18.1
-
-You can generate a new API Key in the API Keys section of the [Grafana Cloud Portal](https://grafana.com/docs/grafana-cloud/cloud-portal/). The role has to be `MetricsPublisher`.
+You can change the default version of the agent by specifying the `agent_version` variable. If not defined, will fallback to the latest Grafana Agent install. Change it to eg. "v0.18.1".
 
     agent_location: /usr/local/bin
 
