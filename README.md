@@ -16,7 +16,7 @@ None. Other than an account on [Grafana Cloud](https://grafana.com/products/clou
 
 Available variables are listed below, along with default values (see `defaults/main.yml`). You can get the values for your enviroment from the [Grafana Cloud Portal](https://grafana.com/docs/grafana-cloud/cloud-portal/).
 
-### Mandatory
+### Required
 
     prometheus_user: <username>
 
