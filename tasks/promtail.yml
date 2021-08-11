@@ -30,7 +30,7 @@
     - name: Template the new service file for Promtail agent
       template:
         src: promtail.service.j2
-        dest: /usr/lib/systemd/system/promtail.service
+        dest: /etc/systemd/system/promtail.service
         mode: '0644'
 
     - name: Reload and start service Promtail agent

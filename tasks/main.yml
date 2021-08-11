@@ -30,7 +30,7 @@
     - name: Template the new service file for Grafana agent
       template:
         src: grafana-agent.service.j2
-        dest: /usr/lib/systemd/system/grafana-agent.service
+        dest: /etc/systemd/system/grafana-agent.service
         mode: '0644'
 
     - name: Reload and start service Grafana agent
