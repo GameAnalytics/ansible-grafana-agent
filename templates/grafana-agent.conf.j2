@@ -1,0 +1,6 @@
+[program:grafana-agent]
+command={{ agent_location }}/agent-linux-{{ type[ansible_architecture] }} --config.file={{ config_location }}/agent-config.yaml
+process_name=%(program_name)s_%(process_num)02d
+autostart=true
+autorestart=true
+startretries=3
