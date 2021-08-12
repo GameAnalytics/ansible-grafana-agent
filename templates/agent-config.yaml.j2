@@ -11,8 +11,6 @@ prometheus:
       host_filter: false
       scrape_configs:
         - job_name: agent
-          authorization:
-            credentials: "{{ scrape_header_token }}"
           static_configs:
             - targets: ["{{ target_host }}:{{ target_port }}"]
               labels:

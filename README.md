@@ -34,10 +34,6 @@ You can generate a new API Key in the API Keys section of the Grafana Cloud Port
 
 Above variables define scraping targets and labels for your endpoints. Endpoint name is `/metrics` by default.
 
-    scrape_header_token: <token> 
-
-[Authorization token](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config) to be set to header.
-
 ### Defaults
 
     agent_version: latest
