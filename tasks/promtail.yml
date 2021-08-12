@@ -25,17 +25,9 @@
     mode: 0644
     force: yes
 
-- name: Create Systemd service
-  block:
-    - name: Template the new service file for Promtail agent
-      template:
-        src: promtail.service.j2
-        dest: /etc/systemd/system/promtail.service
-        mode: '0644'
-
-    - name: Reload and start service Promtail agent
-      service:
-        name: promtail
-        state: restarted
-        daemon_reload: yes
-        enabled: yes
+- name: Create Promtail's Supervisor config file
+  template:
+    src: promtail.conf.j2
+    dest: "/etc/supervisor/conf.d/promtail.conf"
+    mode: 0644
+    force: yes
