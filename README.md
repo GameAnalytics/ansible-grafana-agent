@@ -26,13 +26,17 @@ Each service in [Grafana Cloud](https://grafana.com/products/cloud/) has a uniqu
 
 You can generate a new API Key in the API Keys section of the Grafana Cloud Portal. The role has to be MetricsPublisher.
 
-    metric_label: <labelt>
+    metric_label: <label>
 
     target_host: <host>
 
     target_port: <port>
 
 Above variables define scraping targets and labels for your endpoints. Endpoint name is `/metrics` by default.
+
+    scrape_header_token: <token> 
+
+[Authorization token](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config) to be set to header.
 
 ### Defaults
 

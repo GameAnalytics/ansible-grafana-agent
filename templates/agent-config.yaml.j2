@@ -5,11 +5,14 @@ prometheus:
   wal_directory: /tmp/grafana-agent-wal
   global:
     scrape_interval: 15s
+  
   configs:
     - name: agent
       host_filter: false
       scrape_configs:
         - job_name: agent
+          authorization:
+            credentials: "{{ scrape_header_token }}"
           static_configs:
             - targets: ["{{ target_host }}:{{ target_port }}"]
               labels:
