@@ -66,4 +66,4 @@ GPL-3.0 License
 
 This role was created in 2021 by [Nicolas Leiva](https://github.com/nleiva).
 
-In this fork we modified it to be compatible for setting up the agent in containers easily.
+In this fork we modified the role to be compatible for setting up the agent in containers.
