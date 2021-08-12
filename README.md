@@ -4,7 +4,7 @@
 
 Installs [Grafana Cloud Agent](https://github.com/grafana/agent) on RedHat/CentOS or Debian/Ubuntu servers to collect observability data and sends it to [Grafana Cloud](https://grafana.com/products/cloud/).
 
-This role installs and configures the latest version of [Grafana Cloud Agent](https://github.com/grafana/agent) from [GitHub releases](https://github.com/grafana/agent/releases). It also creates a [systemd service to manage the agent](https://grafana.com/docs/grafana-cloud/agent/agent_as_service/).
+This role installs and configures the latest version of [Grafana Cloud Agent](https://github.com/grafana/agent) from [GitHub releases](https://github.com/grafana/agent/releases). It also creates a supervisor process, but you still need to start it. (Or set up to be started on boot.)
 
 It optionally installs [Promtail](https://grafana.com/docs/loki/latest/clients/promtail/), which is an agent which ships the contents of local logs to [Grafana Cloud](https://grafana.com/products/cloud/) ([Loki](https://grafana.com/oss/loki/)).
 
@@ -52,7 +52,7 @@ By default, this role will ensure [Grafana Cloud Agent](https://github.com/grafa
 
     loki_user: <username>
 
-Each service in [Grafana Cloud](https://grafana.com/products/cloud/) has a unique service id or user. Once in the [Grafana Cloud Portal](https://grafana.com/docs/grafana-cloud/cloud-portal/) click on Loki to get the value you need to provide for `loki_user`. If this value is present, this role will install the [Promtail](https://grafana.com/docs/loki/latest/clients/promtail/) agent and create a Systemd service for it. It will scrape messages from `/var/log` and `journald`. For reference, see [Journal Scraping](https://grafana.com/docs/loki/latest/clients/promtail/scraping/#journal-scraping-linux-only).
+Each service in [Grafana Cloud](https://grafana.com/products/cloud/) has a unique service id or user. Once in the [Grafana Cloud Portal](https://grafana.com/docs/grafana-cloud/cloud-portal/) click on Loki to get the value you need to provide for `loki_user`. If this value is present, this role will install the [Promtail](https://grafana.com/docs/loki/latest/clients/promtail/) agent and create a supervisor process for it. It will scrape messages from `/var/log` and `journald`. For reference, see [Journal Scraping](https://grafana.com/docs/loki/latest/clients/promtail/scraping/#journal-scraping-linux-only).
 
 ## Dependencies
 
@@ -65,3 +65,5 @@ GPL-3.0 License
 ## Author Information
 
 This role was created in 2021 by [Nicolas Leiva](https://github.com/nleiva).
+
+In this fork we modified it to be compatible for setting up the agent in containers easily.
