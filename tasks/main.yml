@@ -32,6 +32,18 @@
     mode: 0644
     force: yes
 
+- name: Reread Supervisor configuration
+  supervisorctl:
+    name: grafana-agent
+    state: present
+  become: yes
+
+- name: Restart grafana-agent service
+  supervisorctl:
+    name: grafana-agent
+    state: restarted
+  become: yes
+
 - name: Install Promtail
   include_tasks: "promtail.yml"
   when:
