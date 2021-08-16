@@ -1,0 +1,6 @@
+[program:promtail]
+command={{ promtail_location }}/promtail-linux-{{ promtail_type[ansible_architecture] }} --config.file={{ promtail_location }}/promtail-config.yaml
+process_name=%(program_name)s_%(process_num)02d
+autostart=true
+autorestart=true
+startretries=3

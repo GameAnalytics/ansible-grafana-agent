@@ -25,12 +25,22 @@
     mode: 0644
     force: yes
 
-- name: Create Supervisor process
+- name: Create Grafana Agent's Supervisor config file
   template:
     src: grafana-agent.conf.j2
     dest: "/etc/supervisor/conf.d/grafana.conf"
     mode: 0644
     force: yes
+
+- name: Reread Supervisor configuration
+  supervisorctl:
+    name: grafana-agent
+    state: present
+
+- name: Restart grafana-agent service
+  supervisorctl:
+    name: grafana-agent
+    state: restarted
 
 - name: Install Promtail
   include_tasks: "promtail.yml"
