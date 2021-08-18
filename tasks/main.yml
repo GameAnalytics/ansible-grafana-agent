@@ -32,6 +32,11 @@
     mode: 0644
     force: yes
 
+- name: Start Supervisord
+  service:
+    name: supervisor
+    state: started
+
 - name: Reread Supervisor configuration
   supervisorctl:
     name: grafana-agent
