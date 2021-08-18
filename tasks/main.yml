@@ -32,22 +32,12 @@
     mode: 0644
     force: yes
 
-- name: Start Supervisord
-  service:
-    name: supervisor
-    state: started
-
-- name: Reread Supervisor configuration
-  supervisorctl:
-    name: grafana-agent
-    state: present
-
-- name: Restart grafana-agent service
-  supervisorctl:
-    name: grafana-agent
-    state: restarted
-
 - name: Install Promtail
   include_tasks: "promtail.yml"
   when:
     - loki_user is defined
+
+- name: Start Supervisord
+  service:
+    name: supervisor
+    enabled: yes
